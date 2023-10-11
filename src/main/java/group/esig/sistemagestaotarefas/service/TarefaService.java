@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class TarefaService {
-    private TarefaRepository repository;
+    private final TarefaRepository repository;
 
     public TarefaService(TarefaRepository repository){
         this.repository = repository;
