@@ -25,6 +25,7 @@ public class Tarefa {
 
     @Data
     public static class DtoRequest{
+        private String id;
         private String titulo;
         private String descricao;
         private String prioridade;
@@ -39,6 +40,7 @@ public class Tarefa {
 
     @Data
     public static class DtoResponse{
+        private String id;
         private String titulo;
         private String descricao;
         private String prioridade;
