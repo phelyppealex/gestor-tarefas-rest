@@ -1,0 +1,15 @@
+TAREFA
+{
+	"titulo": "Configurar o HATEOAS",
+	"descricao": "O HATEOAS é muito importante para quem vai consumir a API",
+	"prioridade": "Média",
+	"status": "Em andamento",
+	"prazo": "Wed Oct 11 12:35:33 GMT 2023",
+	"funcionario_id": 1
+}
+FUNCIONARIO
+{
+	"nome": "João Carlos",
+	"telefone": "(84) 99410-0804",
+	"email": "carlosjaum@gmail.com"
+}

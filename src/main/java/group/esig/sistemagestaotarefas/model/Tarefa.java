@@ -1,9 +1,6 @@
 package group.esig.sistemagestaotarefas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 
@@ -13,6 +10,7 @@ import java.util.Date;
 @Entity
 public class Tarefa {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
     private String descricao;
@@ -25,7 +23,6 @@ public class Tarefa {
 
     @Data
     public static class DtoRequest{
-        private String id;
         private String titulo;
         private String descricao;
         private String prioridade;

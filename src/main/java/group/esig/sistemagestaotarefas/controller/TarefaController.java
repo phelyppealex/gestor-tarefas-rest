@@ -1,7 +1,7 @@
 package group.esig.sistemagestaotarefas.controller;
 
 import group.esig.sistemagestaotarefas.model.Tarefa;
-import group.esig.sistemagestaotarefas.model.Tarefa.DtoResponse;
+import group.esig.sistemagestaotarefas.service.FuncionarioService;
 import group.esig.sistemagestaotarefas.service.TarefaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +21,9 @@ public class TarefaController {
     }
 
     @PostMapping
-    public Tarefa salvar(@RequestBody Tarefa.DtoRequest tarefaDto){
-        Tarefa tarefa = Tarefa.DtoRequest.convertToEntity(tarefaDto, this.mapper);
-        return this.service.save(tarefa);
+    public void salvar(@RequestBody Tarefa.DtoRequest tarefaDto){
+        System.out.println("Passou PostMapping Controller");
+        this.service.save(tarefaDto);
     }
 
     @DeleteMapping("{id}")
@@ -50,8 +50,8 @@ public class TarefaController {
     }
 
     @PutMapping
-    public Tarefa atualizar(@RequestBody Tarefa.DtoRequest tarefaDto){
+    public void atualizar(@RequestBody Tarefa.DtoRequest tarefaDto){
         Tarefa tarefa = Tarefa.DtoRequest.convertToEntity(tarefaDto, this.mapper);
-        return this.service.update(tarefa);
+        this.service.update(tarefa);
     }
 }
