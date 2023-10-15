@@ -1,8 +1,6 @@
 package group.esig.sistemagestaotarefas.service;
 
-import group.esig.sistemagestaotarefas.model.Funcionario;
 import group.esig.sistemagestaotarefas.model.Tarefa;
-import group.esig.sistemagestaotarefas.repository.FuncionarioRepository;
 import group.esig.sistemagestaotarefas.repository.TarefaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
@@ -14,26 +12,25 @@ import java.util.Optional;
 @Service
 public class TarefaService {
     private final TarefaRepository repository;
-    private final FuncionarioRepository funcionarioRepository;
+    private final FuncionarioService funcionarioService;
     private ModelMapper mapper;
 
-    public TarefaService(TarefaRepository repository, FuncionarioRepository funcionarioRepository, ModelMapper mapper){
+    public TarefaService(TarefaRepository repository, FuncionarioService funcionarioService, ModelMapper mapper){
         this.repository = repository;
-        this.funcionarioRepository = funcionarioRepository;
+        this.funcionarioService = funcionarioService;
         this.mapper = mapper;
     }
 
     public void save(Tarefa.DtoRequest tarefaDto){
-        System.out.println("Passou save service");
+        var tarefa = Tarefa.DtoRequest.convertToEntity(tarefaDto, this.mapper);
 
-        Optional<Funcionario> funcionario = this.funcionarioRepository.findById(tarefaDto.getFuncionario_id());
-        if(funcionario.isPresent()) {
-            Tarefa tarefa = Tarefa.DtoRequest.convertToEntity(tarefaDto, this.mapper);
-            tarefa.setFuncionario(funcionario.get());
-            save(tarefa);
-        }else{
-            throw new EntityNotFoundException();
-        }
+        tarefa.setFuncionario(
+            this.funcionarioService.findById(
+                tarefaDto.getFuncionario_id()
+            )
+        );
+
+        this.repository.save(tarefa);
     }
 
     public void save(Tarefa tarefa){
@@ -48,7 +45,7 @@ public class TarefaService {
     }
 
     public void delete(Long id){
-        Tarefa tarefa = findById(id);
+        var tarefa = findById(id);
         this.repository.delete(tarefa);
     }
 

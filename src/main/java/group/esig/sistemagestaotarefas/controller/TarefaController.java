@@ -22,7 +22,6 @@ public class TarefaController {
 
     @PostMapping
     public void salvar(@RequestBody Tarefa.DtoRequest tarefaDto){
-        System.out.println("Passou PostMapping Controller");
         this.service.save(tarefaDto);
     }
 

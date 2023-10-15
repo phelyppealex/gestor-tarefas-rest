@@ -27,7 +27,7 @@ public class Tarefa {
         private String descricao;
         private String prioridade;
         private String status;
-        private Date prazo;
+        private String prazo;
         private Long funcionario_id;
 
         public static Tarefa convertToEntity(Tarefa.DtoRequest dto, ModelMapper mapper){
