@@ -30,6 +30,8 @@ public class TarefaService {
             )
         );
 
+        tarefa.setId(null);
+
         this.repository.save(tarefa);
     }
 

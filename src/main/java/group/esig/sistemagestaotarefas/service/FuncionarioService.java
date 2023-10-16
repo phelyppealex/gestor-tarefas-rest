@@ -17,6 +17,7 @@ public class FuncionarioService {
     }
 
     public Funcionario save(Funcionario funcionario){
+        funcionario.setId(null);
         return this.repository.save(funcionario);
     }
 

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -16,13 +17,14 @@ public class Tarefa {
     private String descricao;
     private String prioridade;
     private String status;
-    private Date prazo;
+    private String prazo;
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
     @Data
     public static class DtoRequest{
+        private Long id;
         private String titulo;
         private String descricao;
         private String prioridade;
@@ -42,7 +44,7 @@ public class Tarefa {
         private String descricao;
         private String prioridade;
         private String status;
-        private Date prazo;
+        private String prazo;
         private Funcionario funcionario;
 
         public static Tarefa.DtoResponse convertToDto(Tarefa tarefa, ModelMapper mapper){

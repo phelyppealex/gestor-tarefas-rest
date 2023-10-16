@@ -13,11 +13,13 @@ import java.util.List;
 @RequestMapping("/tarefa/")
 public class TarefaController {
     private final TarefaService service;
+    private final FuncionarioService funcionarioService;
     private final ModelMapper mapper;
 
-    public TarefaController(TarefaService service, ModelMapper mapper){
+    public TarefaController(TarefaService service, FuncionarioService funcionarioService, ModelMapper mapper){
         this.service = service;
         this.mapper = mapper;
+        this.funcionarioService = funcionarioService;
     }
 
     @PostMapping
@@ -51,6 +53,7 @@ public class TarefaController {
     @PutMapping
     public void atualizar(@RequestBody Tarefa.DtoRequest tarefaDto){
         Tarefa tarefa = Tarefa.DtoRequest.convertToEntity(tarefaDto, this.mapper);
+        tarefa.setFuncionario(this.funcionarioService.findById(tarefaDto.getFuncionario_id()));
         this.service.update(tarefa);
     }
 }
