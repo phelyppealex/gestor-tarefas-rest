@@ -19,6 +19,18 @@ Primeiro certifique-se de ter baixado os dois projetos linkados anteriormente.
 
 ### Angular
 - Tenha o Node.js instalado em sua máquina, abra o terminal no diretório do projeto e rode o seguinte comando no terminal:
+
 ~~~
 ng serve
 ~~~
+
+## O que foi feito?
+
+### Back-end
+Do lado do back-end, foi desenvolvida uma aplicação com endpoints em REST, dividida em pacotes, os quais são: config, controller, repository, model e service. Foram pensados 2 modelos: funcionário e farefa que têm um relacionamento 1:N. Uma tarefa tem que ter obrigatóriamente 1 funcionário e um funcionário pode ter 0/N tarefas.
+
+### Front-end
+Do lado do front-end, foi desenvolvido uma aplicação para consumir a API, a qual tem um CRUD completo para tarefas e para funcionários só é possível cadastrar até o presente momento.
+
+### Ítens concluídos
+Dados os ítens dispostos no documento base os que foram concluídos até então, foram: a, b, c, e.
