@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 
-import java.time.LocalDate;
-import java.util.Date;
-
 @Data
 @Entity
 public class Tarefa {
