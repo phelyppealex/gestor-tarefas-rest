@@ -53,8 +53,11 @@ public class TarefaController {
     @PutMapping
     public void atualizar(@RequestBody Tarefa.DtoRequest tarefaDto){
         Tarefa tarefa = Tarefa.DtoRequest.convertToEntity(tarefaDto, this.mapper);
-        tarefa.setFuncionario(this.funcionarioService.findById(tarefaDto.getFuncionario_id()));
-        
+        tarefa.setFuncionario(
+            this.funcionarioService.findById(
+                tarefaDto.getFuncionario_id()
+            )
+        );
         this.service.update(tarefa);
     }
 }
